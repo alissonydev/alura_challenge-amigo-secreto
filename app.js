@@ -2,16 +2,28 @@
 let amigos = [];
 
 function adicionarAmigo() {  
+  
+  let amigo = document.getElementById('amigo').value;    
 
-  //let amigo = document.querySelector('input').value; 
-  let amigo = document.getElementById('amigo').value;
+  if (amigo.trim() === '') {
+    alert('Por favor digite um nome.');
+    return;
+  } 
 
-  if (amigo == '') {
-    alert('Por favor, digite um nome.')
-  } else {
-    amigos.push(amigo);
-    document.getElementById('amigo').value = '';
-    alert(amigos);    
+  amigos.push(amigo);
+  document.querySelector('#amigo').value = '';     
+  mostrarListaAmigos();
+}
+
+function mostrarListaAmigos() {
+  let listaAmigos = document.querySelector('#listaAmigos');
+  listaAmigos.innerHTML = '';
+    
+  for(let i = 0; i < amigos.length; i++) {      
+    let amigo = amigos[i];
+
+    let listaHTML = document.createElement('li');
+    listaHTML.textContent = amigo;
+    listaAmigos.appendChild(listaHTML);
   }
-
 }
