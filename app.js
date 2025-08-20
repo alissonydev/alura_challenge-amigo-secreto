@@ -10,6 +10,12 @@ function adicionarAmigo() {
     return;
   } 
 
+  if (amigos.includes(amigo)) {
+    alert('Esse nome já consta na lista.');
+    amigo.value = '';
+    return;
+  }
+
   amigos.push(amigo);
   document.querySelector('#amigo').value = '';     
   mostrarListaAmigos();
